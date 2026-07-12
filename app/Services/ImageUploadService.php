@@ -20,35 +20,32 @@ class ImageUploadService
         $webpName = $baseName . '.webp';
         $webpPath = $uploadDir . DIRECTORY_SEPARATOR . $webpName;
 
-        try {
-            $contents = file_get_contents($image->getRealPath());
-
-            if ($contents === false) {
-                throw new \RuntimeException('Could not read uploaded file');
-            }
-
-            $img = @imagecreatefromstring($contents);
-
-            if ($img !== false && function_exists('imagewebp')) {
-                $img = $this->prepareImageResource($img, $image);
-                $img = $this->resizeIfNeeded($img, $maxWidth);
-
-                $result = @imagewebp($img, $webpPath, $quality);
-                imagedestroy($img);
-
-                if ($result) {
-                    return trim($directory, '/') . '/' . $webpName;
-                }
-            }
-        } catch (\Throwable $e) {
-            // fallback below
+        if (!function_exists('imagewebp')) {
+            throw new \RuntimeException('GD WebP support is required for image uploads.');
         }
 
-        $origExt = $image->getClientOriginalExtension() ?: 'jpg';
-        $origName = $baseName . '.' . $origExt;
-        $image->move($uploadDir, $origName);
+        $contents = file_get_contents($image->getRealPath());
 
-        return trim($directory, '/') . '/' . $origName;
+        if ($contents === false) {
+            throw new \RuntimeException('Could not read uploaded file.');
+        }
+
+        $img = @imagecreatefromstring($contents);
+
+        if ($img === false) {
+            throw new \RuntimeException('The uploaded image could not be processed.');
+        }
+
+        $img = $this->prepareImageResource($img, $image);
+        $img = $this->resizeIfNeeded($img, $maxWidth);
+        $result = @imagewebp($img, $webpPath, $quality);
+        imagedestroy($img);
+
+        if (!$result) {
+            throw new \RuntimeException('The uploaded image could not be converted to WebP.');
+        }
+
+        return trim($directory, '/') . '/' . $webpName;
     }
 
     public function delete(?string $relativePath): void

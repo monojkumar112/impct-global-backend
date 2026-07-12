@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\ContactUsController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\ServiceController;
+use App\Http\Controllers\Api\HowWeWorkController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\UserController;
 
@@ -29,6 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/blogs', [BlogController::class, 'index']);
 Route::get('/blogs/recent/{slug}', [BlogController::class, 'recent']);
 Route::get('/blogs/{slug}', [BlogController::class, 'show']);
+Route::get('/services', [ServiceController::class, 'index']);
+Route::get('/how-we-work', [HowWeWorkController::class, 'index']);
 Route::get('/search', [SearchController::class, 'search']);
 Route::get('/contacts', [ContactUsController::class, 'index']);
 Route::get('/contact/{id}', [ContactUsController::class, 'show']);

@@ -60,8 +60,8 @@ class ContactUsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:20',
             'subject' => 'nullable|string|max:255',
             'message' => 'nullable|string',
