@@ -51,13 +51,6 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Content</label>
-                                <style>
-                                    .tox-sidebar-wrap,
-                                    .tox-sidebar-wrap * {
-                                        color: #fff !important;
-                                        font-family: var(--bs-body-font-family) !important;
-                                    }
-                                </style>
                                 <textarea name="content" id="tinymceBlogContent" rows="8" class="form-control">{{ old('content') }}</textarea>
                             </div>
 
@@ -163,7 +156,7 @@
                 automatic_uploads: true,
                 branding: false,
                 promotion: false,
-                content_style: `body { font-family: ${bodyFontFamily}; font-size: 14px; color: #ffffff !important; background-color: #1e293b; } p, h1, h2, h3, h4, h5, h6, li, span, div { color: #ffffff !important; font-family: ${bodyFontFamily}; }`
+                content_style: `body { font-family: ${bodyFontFamily}; font-size: 14px; color: #1e293b !important; background-color: #fff; } p, h1, h2, h3, h4, h5, h6, li, span, div { color: #1e293b !important; font-family: ${bodyFontFamily}; }`
             });
         }
     });
