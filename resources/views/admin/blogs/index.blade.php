@@ -16,6 +16,20 @@
                     <div class="card-body">
                         <h6 class="card-title">Blogs Table</h6>
 
+                        @if (session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="table-responsive">
                             <table id="dataTableExample" class="table">
                                 <thead>
@@ -34,9 +48,9 @@
                                     @foreach ($blogs as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ Str::limit($item->title ?? 'N/A', 50) }}</td>
+                                            <td>{{ Str::limit($item->title ?? 'N/A', 30) }}</td>
                                             <td>{{ Str::limit($item->author ?? '-', 30) }}</td>
-                                            <td>{{ Str::limit($item->slug ?? '-', 30) }}</td>
+                                            <td>{{ Str::limit($item->slug ?? '-', 20) }}</td>
                                             <td>
                                                 @if ($item->image)
                                                     <img src="{{ asset($item->image) }}" alt="img" style="height:40px;" />

@@ -53,6 +53,13 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Content</label>
+                                <style>
+                                    .tox-sidebar-wrap,
+                                    .tox-sidebar-wrap * {
+                                        color: #fff !important;
+                                        font-family: var(--bs-body-font-family) !important;
+                                    }
+                                </style>
                                 <textarea name="content" id="tinymceBlogContent" rows="8" class="form-control">{{ old('content', $blog->content) }}</textarea>
                             </div>
 
@@ -93,6 +100,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        (function () {
+            const blogForm = document.querySelector('form[action="{{ route('admin.blogs.update', $blog->id) }}"]');
+            const imageInput = document.querySelector('input[name="image"]');
+            const maxImageBytes = 10 * 1024 * 1024;
+
+            if (blogForm && imageInput) {
+                blogForm.addEventListener('submit', function (event) {
+                    const file = imageInput.files[0];
+                    if (file && file.size > maxImageBytes) {
+                        event.preventDefault();
+                        alert('Image is too large. Maximum allowed size is 10MB.');
+                    }
+                });
+            }
+        })();
+    </script>
 @endsection
 
 @section('js')
@@ -100,6 +125,10 @@
 <script>
     $(document).ready(function () {
         if (typeof tinymce !== 'undefined') {
+            const bodyFontFamily = getComputedStyle(document.documentElement)
+                .getPropertyValue('--bs-body-font-family')
+                .trim() || '"Roboto", Helvetica, sans-serif';
+
             tinymce.init({
                 selector: '#tinymceBlogContent',
                 height: 450,
@@ -113,7 +142,8 @@
                 images_upload_url: '{{ route('admin.blogs.upload.image') }}',
                 automatic_uploads: true,
                 branding: false,
-                promotion: false
+                promotion: false,
+                content_style: `body { font-family: ${bodyFontFamily}; font-size: 14px; color: #ffffff !important; background-color: #1e293b; } p, h1, h2, h3, h4, h5, h6, li, span, div { color: #ffffff !important; font-family: ${bodyFontFamily}; }`
             });
         }
     });
