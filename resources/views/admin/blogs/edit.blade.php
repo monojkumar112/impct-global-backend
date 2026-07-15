@@ -47,11 +47,6 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Excerpt</label>
-                                <textarea name="excerpt" rows="3" class="form-control">{{ old('excerpt', $blog->excerpt) }}</textarea>
-                            </div>
-
-                            <div class="mb-3">
                                 <label class="form-label">Content</label>
                                 <style>
                                     .tox-sidebar-wrap,
