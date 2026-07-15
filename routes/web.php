@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\HowWeWorkController;
+use App\Http\Controllers\Admin\HomePageController;
+use App\Http\Controllers\Admin\AboutPageController;
+use App\Http\Controllers\Admin\ContactPageController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Artisan;
@@ -55,6 +58,12 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::resource('blogs', BlogController::class);
         Route::resource('services', ServiceController::class)->except('show');
         Route::resource('how_we_works', HowWeWorkController::class)->except('show');
+        Route::get('/home-page/edit', [HomePageController::class, 'edit'])->name('home_page.edit');
+        Route::put('/home-page', [HomePageController::class, 'update'])->name('home_page.update');
+        Route::get('/about-page/edit', [AboutPageController::class, 'edit'])->name('about_page.edit');
+        Route::put('/about-page', [AboutPageController::class, 'update'])->name('about_page.update');
+        Route::get('/contact-page/edit', [ContactPageController::class, 'edit'])->name('contact_page.edit');
+        Route::put('/contact-page', [ContactPageController::class, 'update'])->name('contact_page.update');
         Route::resource('contact_us', ContactUsController::class);
         Route::post('/upload-blog-image', [BlogController::class, 'uploadImage'])
             ->name('blogs.upload.image');

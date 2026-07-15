@@ -21,6 +21,24 @@
             </li>
 
             <li class="nav-item">
+                <a href={{ route('admin.home_page.edit') }} class="nav-link">
+                    <i class="link-icon" data-feather="home"></i>
+                    <span class="link-title">Home Page</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href={{ route('admin.about_page.edit') }} class="nav-link">
+                    <i class="link-icon" data-feather="info"></i>
+                    <span class="link-title">About Page</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href={{ route('admin.contact_page.edit') }} class="nav-link">
+                    <i class="link-icon" data-feather="phone"></i>
+                    <span class="link-title">Contact Page</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href={{ route('admin.contact_us.index') }} class="nav-link">
                     <i class="link-icon" data-feather="mail"></i>
                     <span class="link-title">Contact Us</span>
