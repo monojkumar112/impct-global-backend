@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="#" style="display: flex; align-items: center; gap: 10px;" class="sidebar-brand">
-           <img style="width: 45px; height: 45px;" src="{{ asset("assets/logo/logo.png") }}" alt="">
+        <a href="#" style="display: flex;  align-items: center; gap: 10px;" class="sidebar-brand">
+           <img style="width: 60px; height: auto; background-color: #ffffff; border-radius: 5px; padding:5px;" src="{{ asset("assets/logo/logo.png") }}" alt="">
            <p style="font-size: 14px; font-weight: 600; color: #FFF;">Admin</p>
         </a>
         <div class="sidebar-toggler not-active">

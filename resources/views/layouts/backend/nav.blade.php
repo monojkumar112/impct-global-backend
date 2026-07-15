@@ -232,12 +232,12 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="wd-30 ht-30 rounded-circle" src="{{ asset("assets/logo/logo.png") }}"alt="profile">
+                    <img style="width: 40px; height: 40px; background-color: #ffffff; border-radius: 5px; padding:5px;" class="wd-30 ht-30 rounded-circle" src="{{ asset("assets/logo/logo.png") }}"alt="profile">
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                     <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                         <div class="mb-3">
-                            <img class="wd-80 ht-80 rounded-circle" src="{{ asset("assets/logo/logo.png") }}"
+                            <img style="width: 60px; height: 60px; background-color: #ffffff; border-radius: 5px; padding:5px;" class="wd-80 ht-80 rounded-circle" src="{{ asset("assets/logo/logo.png") }}"
                                 alt="">
                         </div>
                         <div class="text-center">
