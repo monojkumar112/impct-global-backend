@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\SurveyController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\SubscriptionController;
 
 
 /*
@@ -65,6 +66,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::get('/contact-page/edit', [ContactPageController::class, 'edit'])->name('contact_page.edit');
         Route::put('/contact-page', [ContactPageController::class, 'update'])->name('contact_page.update');
         Route::resource('contact_us', ContactUsController::class);
+        Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+        Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
         Route::post('/upload-blog-image', [BlogController::class, 'uploadImage'])
             ->name('blogs.upload.image');
     });

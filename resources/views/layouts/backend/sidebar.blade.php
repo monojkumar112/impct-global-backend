@@ -45,6 +45,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href={{ route('admin.subscriptions.index') }} class="nav-link">
+                    <i class="link-icon" data-feather="bell"></i>
+                    <span class="link-title">Subscriptions</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href={{ route('admin.blogs.index') }} class="nav-link">
                     <i class="link-icon" data-feather="book-open"></i>
                     <span class="link-title">Blogs</span>

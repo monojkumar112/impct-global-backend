@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\HowWeWorkController;
 use App\Http\Controllers\Api\HomePageController;
 use App\Http\Controllers\Api\AboutPageController;
 use App\Http\Controllers\Api\ContactPageController;
+use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\UserController;
 
@@ -44,3 +45,4 @@ Route::get('/contacts', [ContactUsController::class, 'index']);
 Route::get('/contact/{id}', [ContactUsController::class, 'show']);
 Route::get('/contact/check-phone', [ContactUsController::class, 'checkPhone']);
 Route::post('/contact', [ContactUsController::class, 'store']);
+Route::post('/subscribe', [SubscriptionController::class, 'store']);
